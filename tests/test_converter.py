@@ -1,5 +1,6 @@
 """Тесты грамматики, констант и консольного интерфейса."""
 
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -76,6 +77,7 @@ class CliTests(unittest.TestCase):
             input=source.encode("utf-8"),
             capture_output=True,
             cwd=PROJECT_ROOT,
+            env={**os.environ, "PYTHONIOENCODING": "utf-8"},
             check=False,
         )
 

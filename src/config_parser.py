@@ -31,7 +31,7 @@ def build_parser():
     ).set_parse_action(lambda tokens: [("dict", list(tokens))])
     value <<= number | string | reference | array | dictionary
     declaration = (
-        name + pp.Suppress(pp.Keyword("is")) + value + pp.Suppress(";")
+        name + pp.Suppress(pp.Keyword("is")) - value - pp.Suppress(";")
     ).set_parse_action(
         lambda source, position, tokens: [
             (tokens[0], tokens[1], position)
